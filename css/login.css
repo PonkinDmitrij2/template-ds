@@ -31,7 +31,7 @@ body {
 .login {
   position: relative;
   width: 375px;
-  padding-top: 375px;
+  padding-top: 351px;
   padding-bottom: 18px;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
@@ -59,33 +59,137 @@ body {
 }
 
 .login__label {
+  position: relative;
   display: block;
-  padding-bottom: 10px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+}
+
+.login__label:last-of-type {
+  margin-bottom: 7px;
 }
 
 .login__field {
   width: 100%;
+  padding: 0 24px 10px;
+  padding-left: 66px;
   border: none;
+  border-top: solid 20px transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   font: inherit;
   color: inherit;
   background-color: transparent;
+  caret-color: #F36;
+}
+
+.login__placeholder {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  padding: 7px 24px 0;
+  padding-left: 66px;
+  color: #fff;
+  font-size: 80%;
+  line-height: 18px;
+  pointer-events: none;
+  transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+}
+
+.login__placeholder::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.login__placeholder--username::before  {
+  background-image: url("../img/username1.png");
+}
+
+.login__placeholder--password::before  {
+  background-image: url("../img/password1.png");
+}
+
+.login__field + .login__placeholder::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #F36;
+  transform-origin: bottom center;
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+
+.login__field:not(:focus):placeholder-shown + .login__placeholder {
+  font-size: inherit;
+  line-height: 56px;
+}
+
+.login__field:focus {
+  outline: none;
+}
+
+.login__field:focus + .login__placeholder {
+  color: #F36;
+}
+
+.login__field:focus + .login__placeholder::after {
+  transform: scale(1);
+}
+
+.login__field.disabled,
+.login__field:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.login__field.disabled + .login__placeholder,
+.login__field:disabled + .login__placeholder {
+  opacity: 0.3;
+}
+
+.login__field.readonly,
+.login__field:read-only {
+  opacity: 0.5;
+}
+
+.login__field.readonly + .login__placeholder,
+.login__field:read-only + .login__placeholder {
+  opacity: 0.5;
 }
 
 .login__restore {
   margin: 0;
+  padding: 0 24px;
   font-size: 15px;
   text-align: right;
 }
 
 .login__error-text {
   margin: 0;
+  margin-bottom: 7px;
   min-height: 48px;
+  padding: 0 24px;
+  color: #F36;
 }
 
 .login__submit {
   width: 100%;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   padding: 18px 30px;
   font: inherit;
 
@@ -93,6 +197,7 @@ body {
 
 .login__registration {
   margin: 0;
+  padding: 0 24px;
   font-size: 15px;
   text-align: center;
 }
