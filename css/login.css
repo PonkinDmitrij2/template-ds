@@ -72,8 +72,7 @@ body {
 
 .login__field {
   width: 100%;
-  padding: 0 24px 10px;
-  padding-left: 66px;
+  padding: 0 24px 10px 66px;
   border: none;
   border-top: solid 20px transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -90,8 +89,7 @@ body {
   right: 0;
   bottom: 0;
   display: block;
-  padding: 7px 24px 0;
-  padding-left: 66px;
+  padding: 7px 24px 0 66px;
   color: #fff;
   font-size: 80%;
   line-height: 18px;
