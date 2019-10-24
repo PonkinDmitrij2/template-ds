@@ -187,8 +187,28 @@ body {
   width: 100%;
   margin-bottom: 16px;
   padding: 18px 30px;
+  border: none;
   font: inherit;
+  color: #fff;
+  background-color: #F36;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
 
+.login__submit:hover {
+  background-color: #ff114d;
+}
+
+.login__submit:active {
+  outline: none;
+  background-color: #ff557f;
+}
+
+.login__submit.disabled,
+.login__submit:disabled {
+  cursor: default;
+  color: #817f7f;
+  background-color: #b24e67;
 }
 
 .login__registration {
