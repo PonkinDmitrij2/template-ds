@@ -64,7 +64,6 @@ body {
   margin-bottom: 10px;
   line-height: 1.3;
   letter-spacing: 0.5px;
-  overflow: hidden;
 }
 
 .login__label:last-of-type {
