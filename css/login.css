@@ -150,22 +150,22 @@ body {
 .login__field.disabled,
 .login__field:disabled {
   cursor: default;
-  opacity: 0.3;
+  border-bottom-color: #817f7f;
 }
 
 .login__field.disabled + .login__placeholder,
 .login__field:disabled + .login__placeholder {
-  opacity: 0.3;
+  color: #8a8a8a;
 }
 
-.login__field.readonly,
-.login__field:read-only {
-  opacity: 0.5;
+.login__field.readonly:focus + .login__placeholder,
+.login__field:read-only:focus + .login__placeholder {
+  color: #fff;
 }
 
-.login__field.readonly + .login__placeholder,
-.login__field:read-only + .login__placeholder {
-  opacity: 0.5;
+.login__field.readonly:focus + .login__placeholder::after,
+.login__field:read-only:focus + .login__placeholder::after {
+  display: none;
 }
 
 .login__restore {
