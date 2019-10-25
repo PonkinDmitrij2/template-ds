@@ -139,10 +139,6 @@ body {
   outline: none;
 }
 
-.login__field:focus + .login__placeholder {
-  color: #F36;
-}
-
 .login__field:focus + .login__placeholder::after {
   transform: scale(1);
 }
