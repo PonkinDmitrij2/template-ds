@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calendar</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="calendar">
+    <header class="calendar__header">
+      <div class="navbar">
+        <button class="menu">
+          <span class="visually-hidden">Navigation</span>
+        </button>
+
+        <div class="search">
+          <form class="search__form" action="#" method="GET">
+            <input class="search__field" type="search" name="search" placeholder="Search...">
+            <button class="search__submit" type="submit">
+              <span class="visually-hidden">Search</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="calendar-title">October 2019</div>
+
+      <div class="filter">
+        <button class="filter__btn  filter__btn--day" type="button">Day</button>
+        <button class="filter__btn  filter__btn--week" type="button">Week</button>
+        <button class="filter__btn  filter__btn--month" type="button">Month</button>
+      </div>
+    </header>
+
+    <div class="calendar__body"></div>
+
+    <div class="sidebar">
+      <ul class="nav">
+        <li class="nav__item">
+          <a class="nav__link" href="#">
+            <span class="nav__link-text">Home</span>
+            <span class="nav__link-amount">3</span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">
+            <span class="nav__link-text">Overview</span>
+            <span class="nav__link-amount"></span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">
+            <span class="nav__link-text">Groups</span>
+            <span class="nav__link-amount"></span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">
+            <span class="nav__link-text">Lists</span>
+            <span class="nav__link-amount"></span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">
+            <span class="nav__link-text">Profile</span>
+            <span class="nav__link-amount"></span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">
+            <span class="nav__link-text">Timeline</span>
+            <span class="nav__link-amount"></span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">
+            <span class="nav__link-text">Settings</span>
+            <span class="nav__link-amount"></span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">
+            <span class="nav__link-text">Log Out</span>
+          </a>
+        </li>
+      </ul>
+      <button class="sidebar__close">Close</button>
+    </div>
+    <div class="overlay"></div>
+  </div>
+</body>
+
+</html>
