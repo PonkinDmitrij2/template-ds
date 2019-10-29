@@ -5,7 +5,11 @@
     "node": true
   },
   "extends": [
-    "airbnb-base"
+    "airbnb-base",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 2018
@@ -16,6 +20,7 @@
       "error",
       "always"
     ],
+    "prettier/prettier": "error",
     "no-restricted-syntax": 0,
     "import/extensions": [
       "error",
