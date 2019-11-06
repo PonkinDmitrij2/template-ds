@@ -288,6 +288,10 @@ body {
   box-shadow: var(--custom-focus-shadow);
 }
 
+.calendar__date--other-month {
+  color: #9e9eb5;
+}
+
 .sidebar {
   display: none;
 }
