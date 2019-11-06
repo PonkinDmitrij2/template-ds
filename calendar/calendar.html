@@ -39,7 +39,7 @@
           </div>
         </div>
 
-        <div class="calendar-title">October 2019</div>
+        <div class="calendar-title"></div>
 
         <div class="filter">
           <button class="filter__btn  filter__btn--day" type="button">Day</button>
@@ -53,7 +53,19 @@
         </div>
       </header>
 
-      <div class="calendar__body"></div>
+      <div class="calendar__body">
+        <div class="calendar__weekdays">
+          <span>Sun</span>
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+        </div>
+
+        <div class="calendar__dates"></div>
+      </div>
 
       <div class="sidebar">
         <ul class="nav">
@@ -109,5 +121,7 @@
       </div>
       <div class="overlay"></div>
     </div>
+
+    <script src="./js/calendar.js" type="module"></script>
   </body>
 </html>
