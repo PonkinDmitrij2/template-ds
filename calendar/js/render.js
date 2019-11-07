@@ -1,46 +1,33 @@
-const date = new Date();
-const TITLE = 'calendar-title';
-const DATES = 'calendar__dates';
-const title = document.querySelector(`.${TITLE}`);
-const dates = document.querySelector(`.${DATES}`);
+import constants from './constants.js';
 
 const render = () => {
-  date.setDate(1);
+  constants.date.setDate(1);
 
-  const weekDayNum = date.getDay();
+  const weekDayNum = constants.date.getDay();
   const today = new Date();
 
   const currentMonthEndDate = new Date(
-    date.getFullYear(),
-    date.getMonth() + 1,
+    constants.date.getFullYear(),
+    constants.date.getMonth() + 1,
     0,
   ).getDate();
 
   const currentMonthEndDayNum = new Date(
-    date.getFullYear(),
-    date.getMonth(),
+    constants.date.getFullYear(),
+    constants.date.getMonth(),
     currentMonthEndDate,
   ).getDay();
 
-  const prevMonthEndDate = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+  const prevMonthEndDate = new Date(
+    constants.date.getFullYear(),
+    constants.date.getMonth(),
+    0,
+  ).getDate();
 
-  const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
-  const titleString = `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
-  title.textContent = titleString;
+  const titleString = `${
+    constants.monthNames[constants.date.getMonth()]
+  } ${constants.date.getFullYear()}`;
+  constants.title.textContent = titleString;
 
   let templateDates = '';
   const SHIFT_DAY = 1;
@@ -52,7 +39,8 @@ const render = () => {
   }
 
   for (let j = 1; j <= currentMonthEndDate; j++) {
-    const isToday = j === today.getDate() && date.getMonth() === today.getMonth();
+    const isToday =
+      j === today.getDate() && constants.date.getMonth() === today.getMonth();
 
     if (isToday) {
       templateDates += `<button class='calendar__date  calendar__date--today' type='button'>${j}</button>`;
@@ -67,7 +55,7 @@ const render = () => {
     number += 1;
   }
 
-  dates.innerHTML = templateDates;
+  constants.datesBlock.innerHTML = templateDates;
 };
 
 export default render;
