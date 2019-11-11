@@ -245,63 +245,6 @@ body {
   margin: 0 -10px;
 }
 
-.calendar__week {
-  display: flex;
-  justify-content: space-around;
-}
-
-.calendar__date {
-  position: relative;
-  flex-grow: 1;
-  margin-bottom: 9px;
-  padding: 10px 0;
-  border: none;
-  font: inherit;
-  font-size: 14px;
-  color: inherit;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.calendar__date::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  width: 40px;
-  height: 40px;
-  margin: auto;
-  border-radius: 50%;
-  background-color: #f3f3f4;
-}
-
-.calendar__date--today {
-  color: #f36;
-}
-
-.calendar__date--selected::after {
-  content: '';
-}
-
-.calendar__date:hover::after {
-  content: '';
-}
-
-.calendar__date:focus {
-  outline: none;
-}
-
-.calendar__date:focus::after {
-  content: '';
-  box-shadow: var(--custom-focus-shadow);
-}
-
-.calendar__date--other-month {
-  color: #9e9eb5;
-}
-
 .sidebar {
   display: none;
 }
