@@ -242,14 +242,17 @@ body {
 }
 
 .calendar__dates {
-  display: flex;
-  flex-wrap: wrap;
   margin: 0 -10px;
+}
+
+.calendar__week {
+  display: flex;
+  justify-content: space-around;
 }
 
 .calendar__date {
   position: relative;
-  width: 14.2857%;
+  flex-grow: 1;
   margin-bottom: 9px;
   padding: 10px 0;
   border: none;
@@ -274,7 +277,14 @@ body {
   background-color: #f3f3f4;
 }
 
-.calendar__date--today::after,
+.calendar__date--today {
+  color: #f36;
+}
+
+.calendar__date--selected::after {
+  content: '';
+}
+
 .calendar__date:hover::after {
   content: '';
 }
