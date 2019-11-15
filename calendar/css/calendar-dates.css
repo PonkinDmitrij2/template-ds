@@ -6,6 +6,7 @@
 .calendar__date {
   position: relative;
   flex-grow: 1;
+  width: 14.2857%;
   margin-bottom: 9px;
   padding: 10px 0;
   border: none;
