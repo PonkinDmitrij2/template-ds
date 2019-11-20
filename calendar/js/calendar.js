@@ -3,8 +3,12 @@ import data from './data.js';
 import view from './view.js';
 
 const { days, month, year } = data.getData();
-constants.title.textContent = `${constants.monthNames[month]} ${year}`;
-constants.datesBlock.innerHTML = view.render(days);
+if (constants.title) {
+  constants.title.textContent = `${constants.monthNames[month]} ${year}`;
+}
+if (constants.datesBlock) {
+  constants.datesBlock.innerHTML = view.render(days);
+}
 
 const handleDate = (event) => {
   if (event.target.matches(`.${constants.DATE}`)) {
@@ -19,4 +23,6 @@ const handleDate = (event) => {
   }
 };
 
-constants.datesBlock.addEventListener('click', handleDate);
+if (constants.datesBlock) {
+  constants.datesBlock.addEventListener('click', handleDate);
+}
