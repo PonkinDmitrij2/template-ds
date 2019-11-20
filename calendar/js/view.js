@@ -11,17 +11,25 @@ const chunkArr = (chunkLength, arr) => {
   return result;
 };
 
+const generateButton = (value, classNames, iso) => {
+  return `<button class="${classNames.join(' ')}" data-iso="${iso}">${value}</button>`;
+};
+
 const render = (data) => {
   const buttonStrings = data.map(({ value, isToday, isMainMonth, iso }) => {
     if (!isMainMonth) {
-      return `<button class="${constants.DATE} ${constants.DATE_OTHER}" data-iso="${iso}">${value}</button>`;
+      return generateButton(value, [constants.DATE, constants.DATE_OTHER], iso);
     }
 
     if (isToday) {
-      return `<button class="${constants.DATE} ${constants.DATE_TODAY} ${constants.DATE_SELECTED}" data-iso="${iso}">${value}</button>`;
+      return generateButton(
+        value,
+        [constants.DATE, constants.DATE_TODAY, constants.DATE_SELECTED],
+        iso,
+      );
     }
 
-    return `<button class="${constants.DATE}" data-iso="${iso}">${value}</button>`;
+    return generateButton(value, [constants.DATE], iso);
   });
 
   const chunks = chunkArr(7, buttonStrings);
