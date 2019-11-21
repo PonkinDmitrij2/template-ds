@@ -11,8 +11,10 @@ const chunkArr = (chunkLength, arr) => {
   return result;
 };
 
-const generateButton = (value, classNames, iso) => {
-  return `<button class="${classNames.join(' ')}" data-iso="${iso}">${value}</button>`;
+const generateButton = (value, classNames, iso, attr = '') => {
+  return `<button class="${classNames.join(
+    ' ',
+  )}" data-iso="${iso}" ${attr}>${value}</button>`;
 };
 
 const render = (data) => {
@@ -26,6 +28,7 @@ const render = (data) => {
         value,
         [constants.DATE, constants.DATE_TODAY, constants.DATE_SELECTED],
         iso,
+        'autofocus',
       );
     }
 
