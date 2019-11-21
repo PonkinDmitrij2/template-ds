@@ -1,6 +1,7 @@
 import constants from './constants.js';
 import data from './data.js';
 import view from './view.js';
+import navigation from './navigation.js';
 
 const { days, month, year } = data.getData();
 if (constants.title) {
@@ -9,6 +10,8 @@ if (constants.title) {
 if (constants.datesBlock) {
   constants.datesBlock.innerHTML = view.render(days);
 }
+
+navigation.init();
 
 const handleDate = (event) => {
   if (event.target.matches(`.${constants.DATE}`)) {
