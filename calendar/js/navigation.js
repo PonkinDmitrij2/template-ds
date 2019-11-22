@@ -65,21 +65,14 @@ const moveSelected = (event) => {
   });
   const currentSelected = dates[currentSelectedIndex];
 
-  if (event.code === ENTER_ARROW_RIGHT) {
-    moveToRight(dates, currentSelectedIndex, currentSelected);
-  }
+  const methods = {
+    [ENTER_ARROW_LEFT]: moveToLeft,
+    [ENTER_ARROW_UP]: moveToUp,
+    [ENTER_ARROW_RIGHT]: moveToRight,
+    [ENTER_ARROW_DOWN]: moveToDown,
+  };
 
-  if (event.code === ENTER_ARROW_LEFT) {
-    moveToLeft(dates, currentSelectedIndex, currentSelected);
-  }
-
-  if (event.code === ENTER_ARROW_UP) {
-    moveToUp(dates, currentSelectedIndex, currentSelected);
-  }
-
-  if (event.code === ENTER_ARROW_DOWN) {
-    moveToDown(dates, currentSelectedIndex, currentSelected);
-  }
+  methods[event.code](dates, currentSelectedIndex, currentSelected);
 };
 
 const init = () => window.addEventListener('keydown', moveSelected);
