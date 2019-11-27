@@ -31,15 +31,11 @@
   background-color: #f3f3f4;
 }
 
-.calendar__date--today {
-  color: #f36;
-}
-
-.calendar__date--selected::after {
+.calendar__date--selected:not(:disabled)::after {
   content: '';
 }
 
-.calendar__date:hover::after {
+.calendar__date:hover:not(:disabled)::after {
   content: '';
 }
 
@@ -54,4 +50,14 @@
 
 .calendar__date--other-month {
   color: #9e9eb5;
+}
+
+.calendar__date:disabled {
+  cursor: default;
+  color: #d0d0d0;
+}
+
+.calendar__date--today,
+.calendar__date--today:disabled {
+  color: #f36;
 }

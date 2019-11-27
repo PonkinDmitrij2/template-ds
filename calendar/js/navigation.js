@@ -4,6 +4,7 @@ const ENTER_ARROW_LEFT = 'ArrowLeft';
 const ENTER_ARROW_UP = 'ArrowUp';
 const ENTER_ARROW_RIGHT = 'ArrowRight';
 const ENTER_ARROW_DOWN = 'ArrowDown';
+const WEEK_LENGTH = 7;
 
 const toggleClassName = (currentElem, nextElem, className) => {
   currentElem.classList.remove(className);
@@ -20,32 +21,73 @@ const moveToLeft = (datesArr, currentElemIndex, currentElem) => {
   if (currentElemIndex === 0) {
     return;
   }
-  const nextSelected = datesArr[currentElemIndex - 1];
-  changeActive(currentElem, nextSelected, constants.DATE_SELECTED);
+
+  const getNextSelected = (currentIndex, arr) => {
+    return arr
+      .slice(0, currentIndex)
+      .reverse()
+      .find((elem) => !elem.disabled);
+  };
+
+  const nextSelected = getNextSelected(currentElemIndex, datesArr);
+  if (nextSelected) {
+    changeActive(currentElem, nextSelected, constants.DATE_SELECTED);
+  }
 };
 
 const moveToRight = (datesArr, currentElemIndex, currentElem) => {
   if (currentElemIndex === datesArr.length - 1) {
     return;
   }
-  const nextSelected = datesArr[currentElemIndex + 1];
-  changeActive(currentElem, nextSelected, constants.DATE_SELECTED);
+
+  const getNextSelected = (currentIndex, arr) => {
+    return arr.slice(currentIndex + 1).find((elem) => !elem.disabled);
+  };
+
+  const nextSelected = getNextSelected(currentElemIndex, datesArr);
+  if (nextSelected) {
+    changeActive(currentElem, nextSelected, constants.DATE_SELECTED);
+  }
 };
 
 const moveToUp = (datesArr, currentElemIndex, currentElem) => {
   if (currentElemIndex < 7) {
     return;
   }
-  const nextSelected = datesArr[currentElemIndex - 7];
-  changeActive(currentElem, nextSelected, constants.DATE_SELECTED);
+
+  const getNextSelected = (currentIndex, arr) => {
+    for (let i = currentIndex - WEEK_LENGTH; i >= 0; i -= WEEK_LENGTH) {
+      if (!arr[i].disabled) {
+        return arr[i];
+      }
+    }
+    return null;
+  };
+
+  const nextSelected = getNextSelected(currentElemIndex, datesArr);
+  if (nextSelected) {
+    changeActive(currentElem, nextSelected, constants.DATE_SELECTED);
+  }
 };
 
 const moveToDown = (datesArr, currentElemIndex, currentElem) => {
   if (currentElemIndex > datesArr.length - 8) {
     return;
   }
-  const nextSelected = datesArr[currentElemIndex + 7];
-  changeActive(currentElem, nextSelected, constants.DATE_SELECTED);
+
+  const getNextSelected = (currentIndex, arr) => {
+    for (let i = currentIndex + WEEK_LENGTH; i < arr.length; i += WEEK_LENGTH) {
+      if (!arr[i].disabled) {
+        return arr[i];
+      }
+    }
+    return null;
+  };
+
+  const nextSelected = getNextSelected(currentElemIndex, datesArr);
+  if (nextSelected) {
+    changeActive(currentElem, nextSelected, constants.DATE_SELECTED);
+  }
 };
 
 const moveSelected = (event) => {

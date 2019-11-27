@@ -17,7 +17,7 @@ const daysInMonth = (month, year) => {
   }
 };
 
-const getLastDaysInPrevMonth = () => {
+const getLastDaysInPrevMonth = (blocked) => {
   const numberOfDays = selectedDate.getDay();
   const targetDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() - 1);
   const endDayOfPrevMonth = daysInMonth(targetDate.getMonth(), targetDate.getFullYear());
@@ -32,6 +32,7 @@ const getLastDaysInPrevMonth = () => {
     day.isMainMonth = false;
     day.iso = `${targetDate.getFullYear()}-${targetDate.getMonth() +
       1}-${date}${ISO_PART_TIME}`;
+    day.isBlocked = blocked.includes(day.iso);
 
     days.push(day);
   }
@@ -39,7 +40,7 @@ const getLastDaysInPrevMonth = () => {
   return days;
 };
 
-const getDaysInCurrentMonth = () => {
+const getDaysInCurrentMonth = (blocked) => {
   const endDayOfCurrentMonth = daysInMonth(
     selectedDate.getMonth(),
     selectedDate.getFullYear(),
@@ -56,6 +57,7 @@ const getDaysInCurrentMonth = () => {
     day.isMainMonth = true;
     day.iso = `${selectedDate.getFullYear()}-${selectedDate.getMonth() +
       1}-${i}${ISO_PART_TIME}`;
+    day.isBlocked = blocked.includes(day.iso);
 
     days.push(day);
   }
@@ -63,7 +65,7 @@ const getDaysInCurrentMonth = () => {
   return days;
 };
 
-const getFirstDaysInNextMonth = () => {
+const getFirstDaysInNextMonth = (blocked) => {
   const targetDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1);
   const weekDayToStart = targetDate.getDay();
   const LAST_DAY_OF_WEEK = 6;
@@ -79,6 +81,7 @@ const getFirstDaysInNextMonth = () => {
     day.isMainMonth = false;
     day.iso = `${targetDate.getFullYear()}-${targetDate.getMonth() +
       1}-${num}${ISO_PART_TIME}`;
+    day.isBlocked = blocked.includes(day.iso);
 
     days.push(day);
   }
@@ -86,7 +89,7 @@ const getFirstDaysInNextMonth = () => {
   return days;
 };
 
-const getData = (...args) => {
+const getData = (blocked, ...args) => {
   if (args.length === 2) {
     const [month, year] = args;
     selectedDate.setMonth(month);
@@ -102,9 +105,9 @@ const getData = (...args) => {
   selectedDate.setDate(1);
 
   const days = [
-    ...getLastDaysInPrevMonth(),
-    ...getDaysInCurrentMonth(),
-    ...getFirstDaysInNextMonth(),
+    ...getLastDaysInPrevMonth(blocked),
+    ...getDaysInCurrentMonth(blocked),
+    ...getFirstDaysInNextMonth(blocked),
   ];
 
   return {

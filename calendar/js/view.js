@@ -11,28 +11,33 @@ const chunkArr = (chunkLength, arr) => {
   return result;
 };
 
-const generateButton = (value, classNames, iso, attr = '') => {
-  return `<button class="${classNames.join(
+const generateButton = (value, classNames, attributes) => {
+  return `<button class="${classNames.join(' ')}" ${attributes.join(
     ' ',
-  )}" data-iso="${iso}" ${attr}>${value}</button>`;
+  )}>${value}</button>`;
 };
 
 const render = (data) => {
-  const buttonStrings = data.map(({ value, isToday, isMainMonth, iso }) => {
+  const buttonStrings = data.map(({ value, isToday, isMainMonth, isBlocked, iso }) => {
+    const disabled = `${isBlocked ? 'disabled' : ''}`;
+
     if (!isMainMonth) {
-      return generateButton(value, [constants.DATE, constants.DATE_OTHER], iso);
+      return generateButton(
+        value,
+        [constants.DATE, constants.DATE_OTHER],
+        [`data-iso="${iso}"`, `${disabled}`],
+      );
     }
 
     if (isToday) {
       return generateButton(
         value,
         [constants.DATE, constants.DATE_TODAY, constants.DATE_SELECTED],
-        iso,
-        'autofocus',
+        [`data-iso="${iso}"`, `${disabled}`, 'autofocus'],
       );
     }
 
-    return generateButton(value, [constants.DATE], iso);
+    return generateButton(value, [constants.DATE], [`data-iso="${iso}"`, `${disabled}`]);
   });
 
   const chunks = chunkArr(7, buttonStrings);

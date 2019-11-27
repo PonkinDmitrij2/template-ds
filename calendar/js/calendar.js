@@ -3,7 +3,14 @@ import data from './data.js';
 import view from './view.js';
 import navigation from './navigation.js';
 
-const { days, month, year } = data.getData();
+const blockedDays = [
+  '2019-10-28T00:00:00.000Z',
+  '2019-11-6T00:00:00.000Z',
+  '2019-11-15T00:00:00.000Z',
+  '2019-11-20T00:00:00.000Z',
+  // '2019-11-27T00:00:00.000Z',
+];
+const { days, month, year } = data.getData(blockedDays);
 if (constants.title) {
   constants.title.textContent = `${constants.monthNames[month]} ${year}`;
 }
